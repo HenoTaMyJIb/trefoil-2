@@ -1,7 +1,7 @@
 <nav class="nav">
     <div class="container">
         <div class="nav-left">
-            <a class="nav-item is-brand" href="/"><h3 class="subtitle">E-Keskkond Trefoil<h3></a>
+            <a class="nav-item is-brand" href="/"><h3 class="subtitle">E-Keskkond Trefoil</h3></a>
         </div>
         <span class="nav-toggle">
             <span></span>

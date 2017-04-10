@@ -101,7 +101,6 @@ Vue.component('registrations-actions', {
 
     methods: {
         showGymnast() {
-          console.log('here')
           this.$parent.$parent.$parent.showInfoModal = true;
           this.$parent.$parent.$parent.activeRow = this.rowData;
         },

@@ -47,6 +47,7 @@
 
             <datatable url="{{url('admin/registrations/fetch')}}" :sort-order="sortOrder" ref="registrationsTable" :columns="columns" :filters="filters"></datatable>
             @include('registrations.show')
+
             <modal v-if="showModal" @close="showModal = false" ref="modal">
                 <span slot="title">Registreerimise kinnitamine</span>
                 <table class="table is-bordered is-striped is-narrow">
@@ -58,7 +59,7 @@
                         <td><b>Võimleja nimi:</b></td>
                         <td v-text="activeRow.student.name"></td>
                     </tr>
-                <table>
+                </table>
                 <div class="field mb10">
                       <label class="label">Vali klubi rühm</label>
                       <p class="control">
@@ -78,6 +79,7 @@
                   </div>
 
             </modal>
+
         </div>
 </registrations-view>
 

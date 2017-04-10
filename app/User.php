@@ -26,4 +26,36 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     *
+     */
+    public static function superAdmin()
+    {
+        return self::where('email', env('SUPER_ADMIN'))->first();
+    }
+
+    /**
+     *
+     */
+    public static function admin()
+    {
+        return self::where('email', env('ADMIN'))->first();
+    }
+
+    /**
+     *
+     */
+    public function club()
+    {
+        # code...
+    }
+
+    /**
+     * 
+     */
+    public function isCoach()
+    {
+        # code...
+    }
 }

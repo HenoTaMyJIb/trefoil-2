@@ -44,3 +44,20 @@ window.axios.defaults.headers.common = {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+/**
+ * Global events
+ */
+window.bus = new Vue()
+
+/**
+ * Locales
+ */
+ import VueInternalization from 'vue-i18n';
+ import Locales from './vue-i18n-locales.generated.js';
+ Vue.use(VueInternalization)
+ Vue.config.lang = 'et';
+
+ Object.keys(Locales).forEach(function(lang) {
+     Vue.locale(lang, Locales[lang])
+ })

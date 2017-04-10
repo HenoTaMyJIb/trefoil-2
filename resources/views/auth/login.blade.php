@@ -48,7 +48,7 @@
 
                             <p class="control">
                                 <label class="checkbox">
-                                        <input type="checkbox"> Remember me
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                 </label>
                             </p>
                             <p class="control">

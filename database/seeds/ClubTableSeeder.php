@@ -36,7 +36,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Kabrits',
             'personal_code' => '00000000000',
             'email' => 'tatjana2369@mail.ru',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -50,7 +49,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Ulanova',
             'personal_code' => '00000000000',
             'email' => 'singa.julia@gmail.com',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -64,7 +62,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Semjonov',
             'personal_code' => '00000000000',
             'email' => 'semjonovoleg74@gmail.com',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -78,7 +75,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Popusina',
             'personal_code' => '00000000000',
             'email' => '_fiamma_@list.ru',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -92,7 +88,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Medvedski',
             'personal_code' => '00000000000',
             'email' => '',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -106,7 +101,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Ivantsenko',
             'personal_code' => '00000000000',
             'email' => '',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([
@@ -120,7 +114,6 @@ class ClubTableSeeder extends Seeder
             'lastname' => 'Grankin',
             'personal_code' => '00000000000',
             'email' => '',
-            'user_id' => $userId,
         ]);
 
         DB::table('coaches')->insert([

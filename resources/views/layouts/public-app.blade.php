@@ -14,7 +14,7 @@
     <!-- Styles -->
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
     <!-- Scripts -->
     <script>
@@ -38,7 +38,7 @@
                     <h2 class="subtitle">@yield('subtitle')</h2>
                 </div>
             </div>
-            
+
             @if (session('status'))
             <div class="notification is-success">
                 <h2 class="title">{{ session('status') }}</h2>

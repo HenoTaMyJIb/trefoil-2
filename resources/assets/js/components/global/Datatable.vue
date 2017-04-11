@@ -177,6 +177,10 @@ export default {
           return '<span class="tag is-success">On vabad kohad</span>'
         },
 
+        dateTimeFormat(value) {
+          return moment(value).format(this.$root.dateTimeFormat)
+        },
+
         status(value) {
           return this.$t('registrations.status_' + value);
         }

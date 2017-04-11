@@ -35,6 +35,10 @@ window.swal = require('sweetalert2')
 const app = new Vue({
     el: '#app',
     data: {
-      field: 0
+      dateTimeFormat: 'DD MMMM YYYY HH:mm:ss'
+    },
+
+    mounted() {
+      moment.locale('et');
     }
 });

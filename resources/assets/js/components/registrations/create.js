@@ -42,15 +42,20 @@ module.exports = {
 
     methods: {
         onSubmit() {
+            let self = this;
             this.form.submit('post', '/registrations')
                 .then(response => {
                     window.scrollTo(0, 0);
+
                     swal({
                         title: 'Registreerimine õnnestus',
                         text: response.message,
                         type: 'success',
-                        // timer: 2000
-                    })
+                    }).then(
+                        function() {
+                            window.scrollTo(0, 0);
+                        },
+                    )
                 });
         },
 
@@ -59,7 +64,11 @@ module.exports = {
             let selectedField = this.fields.find(field => {
                 return field.id == this.form.field;
             })
-            this.fieldFull = selectedField.is_full
+            if (selectedField) {
+                this.fieldFull = selectedField.is_full
+            } else {
+              this.fieldFull = false;
+            }
         },
 
         generateData() {

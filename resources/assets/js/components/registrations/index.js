@@ -24,7 +24,8 @@ module.exports = {
             }, {
                 name: 'created_at',
                 title: 'Kuupäev',
-                sortField: 'created_at'
+                sortField: 'created_at',
+                callback: 'dateTimeFormat'
             }, {
                 name: 'status',
                 title: this.$t('registrations.status'),

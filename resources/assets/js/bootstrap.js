@@ -61,3 +61,9 @@ window.bus = new Vue()
  Object.keys(Locales).forEach(function(lang) {
      Vue.locale(lang, Locales[lang])
  })
+
+ /**
+  * Moment
+  */
+
+window.moment = require('moment');

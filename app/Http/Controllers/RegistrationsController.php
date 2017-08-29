@@ -11,6 +11,10 @@ use App\User;
 use App\Helpers\Datatable;
 use App\Group;
 use App\Gymnast;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationFeedback;
+use App\Mail\RegistrationAccepted;
+use Notification;
 
 class RegistrationsController extends Controller
 {
@@ -119,8 +123,10 @@ class RegistrationsController extends Controller
             $parent2
         );
 
-        User::superAdmin()->notify(new RegistrationCreated($registration));
-        User::admin()->notify(new RegistrationCreated($registration));
+        Notification::send([User::superAdmin(), User::admin()], new RegistrationCreated($registration));
+        Mail::to($parent1['email'])->queue(new RegistrationFeedback($registration));
+
+        $request->session()->flash('status', 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.');
 
         return ['message' => 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.'];
     }
@@ -196,6 +202,7 @@ class RegistrationsController extends Controller
         ]);
 
         $registration->update(['status' => 'accepted']);
+        Mail::to($registration->parent1->email)->queue(new RegistrationAccepted($registration, $request->group));
 
         return response(['message' => 'ok']);
     }

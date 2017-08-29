@@ -41,7 +41,10 @@
 
             @if (session('status'))
             <div class="notification is-success">
-                <h2 class="title">{{ session('status') }}</h2>
+                <div class="container">
+                    <p class="title is-4">{{ session('status') }}</p>
+                </div>
+
             </div>
             @endif
         </section>

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class TestEmail extends Notification
+class TestEmail extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -41,9 +41,7 @@ class TestEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', 'https://laravel.com')
-                    ->line('Thank you for using our application!');
+                    ->line('Trefoil test email');
     }
 
     /**

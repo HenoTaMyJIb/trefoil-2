@@ -4,6 +4,7 @@ module.exports = {
      */
     data() {
         return {
+            loading: false,
             form: new Form({
                 student: {
                     firstname: '',
@@ -42,20 +43,14 @@ module.exports = {
 
     methods: {
         onSubmit() {
+            this.loading = true;
             let self = this;
             this.form.submit('post', '/registrations')
                 .then(response => {
-                    window.scrollTo(0, 0);
-
-                    swal({
-                        title: 'Registreerimine õnnestus',
-                        text: response.message,
-                        type: 'success',
-                    }).then(
-                        function() {
-                            window.scrollTo(0, 0);
-                        },
-                    )
+                    this.loading = false;
+                    window.location.replace('/registration')
+                }).catch(e => {
+                    this.loading = false;
                 });
         },
 
@@ -67,7 +62,7 @@ module.exports = {
             if (selectedField) {
                 this.fieldFull = selectedField.is_full
             } else {
-              this.fieldFull = false;
+                this.fieldFull = false;
             }
         },
 

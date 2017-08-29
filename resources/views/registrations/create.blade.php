@@ -71,7 +71,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         <label class="label"></label>
                       </div>
                       <div class="control">
-                        <button class="button is-primary is-fullwidth is-medium">Registreeri</button>
+                        <button class="button is-primary is-fullwidth is-medium" :disabled="loading">Registreeri</button>
                       </div>
                     </div>
 

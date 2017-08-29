@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\TestEmail::class
     ];
 
     /**
@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('queue:restart')->dailyAt('01:00');
+        $schedule->command('queue:work --daemon --tries=3 --sleep=3')->dailyAt('01:00');
+        // $schedule->command(EmailsCommand::class, ['--force'])->daily();
     }
 
     /**

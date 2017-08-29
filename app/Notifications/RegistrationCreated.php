@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Registration;
 
-class RegistrationCreated extends Notification
+class RegistrationCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -45,11 +45,12 @@ class RegistrationCreated extends Notification
     {
         return (new MailMessage)
                     ->subject('Uus registreerimine')
+                    ->greeting('Tere')
                     ->line('Uus registreerimine rühma: ' . $this->registration->field->name)
                     ->line('Lapse nimi: ' . $this->registration->student->name . " - {$this->registration->student->age} aastat")
                     ->line('Vanema nimi: ' . $this->registration->parent1->name . " (E-post: {$this->registration->parent1->email} | Telefon: {$this->registration->parent1->phone})")
                     ->line('Kommentaar: ' . $this->registration->comment)
-                    ->action('Vaata', url('admin/registrations/' . $this->registration->id));
+                    ->salutation(config('app.name'));
     }
 
     /**

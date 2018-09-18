@@ -40,7 +40,7 @@
             </div>
 
             @if (session('status'))
-            <div class="notification is-success">
+            <div class="notification is-info">
                 <div class="container">
                     <p class="title is-4">{{ session('status') }}</p>
                 </div>

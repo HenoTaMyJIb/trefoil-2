@@ -9,12 +9,12 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
 <create-registration-view inline-template :fields="{{$fields}}">
 <section class="section" v-cloak>
     <div class="container">
-            <div class="notification is-warning">
-                    See on registreerimine proovitrennile, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
-                    Olge kannatlik, me võtame Teiega ühendust niipea kui võimalik.
-            </div>
         <div class="columns">
             <div class="column is-three-quarters">
+                <div class="notification is-warning">
+                        See on registreerimine proovitrennile, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
+                        Olge kannatlik, me võtame Teiega ühendust niipea kui võimalik.
+                </div>
                 <form method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
                     <div class="control is-horizontal">
                         <div class="control-label required">

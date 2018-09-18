@@ -13,9 +13,6 @@ module.exports = {
                 name: 'student.name',
                 title: 'Lapse nimi',
             }, {
-                name: 'student.personal_code',
-                title: 'Lapse isikukood',
-            }, {
                 name: 'student.age',
                 title: 'Lapse vanus',
             }, {

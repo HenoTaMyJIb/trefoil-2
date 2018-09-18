@@ -30,15 +30,6 @@
                           <option value="0">Kõik staatused</option>
                           <option value="new">Uus</option>
                           <option value="waiting">Ootel</option>
-                          <option value="accepted">Vastuvõetud</option>
-                          <option value="rejected">Tagasi lükatud</option>
-                        </select>
-                      </span>
-                    </p>
-                    <p class="control">
-                      <span class="select">
-                        <select v-model="filters.year" @change="$refs.registrationsTable.reload()">
-                          <option value="2017">2017</option>
                         </select>
                       </span>
                     </p>

@@ -9,28 +9,13 @@ module.exports = {
                 student: {
                     firstname: '',
                     lastname: '',
-                    personal_code: '',
-                    address: '',
-                    phone: '',
-                    email: '',
+                    age: ''
                 },
                 parent1: {
                     firstname: '',
                     lastname: '',
-                    personal_code: '',
-                    address: '',
                     phone: '',
                     email: '',
-                    work_place: ''
-                },
-                parent2: {
-                    firstname: '',
-                    lastname: '',
-                    personal_code: '',
-                    address: '',
-                    phone: '',
-                    email: '',
-                    work_place: ''
                 },
                 comment: '',
                 field: '',

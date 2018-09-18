@@ -33,7 +33,7 @@ class Registration extends Model
         return $this->belongsTo(Field::class);
     }
 
-    public static function fromForm($comment, $fieldId, Person $student, Person $parent1, $parent2)
+    public static function fromForm($comment, $fieldId, Person $student, Person $parent1)
     {
         $registration = Registration::create([
             'comment' => $comment,
@@ -41,7 +41,7 @@ class Registration extends Model
         ]);
 
         $field = Field::find($fieldId);
-        if($field->is_full) {
+        if ($field->is_full) {
             $registration->status = 'waiting';
         } else {
             $registration->status = 'new';
@@ -50,9 +50,6 @@ class Registration extends Model
 
         $registration->student()->associate($student);
         $registration->parent1()->associate($parent1);
-        if($parent2) {
-            $registration->parent2()->associate($parent2);
-        }
 
         $registration->save();
 
@@ -61,7 +58,7 @@ class Registration extends Model
 
     public function scopeStatus($query, $status)
     {
-        if(!$status) {
+        if (!$status) {
             return $query;
         }
 
@@ -70,11 +67,10 @@ class Registration extends Model
 
     public function scopeField($query, $field)
     {
-        if(!$field) {
+        if (!$field) {
             return $query;
         }
 
         return $query->where('field_id', $field);
     }
-
 }

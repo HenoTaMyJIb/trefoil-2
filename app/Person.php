@@ -11,14 +11,14 @@ class Person extends Model
      *
      * @var array
      */
-    protected $fillable = ['firstname', 'lastname', 'address', 'personal_code', 'phone', 'email', 'work_place'];
+    protected $fillable = ['firstname', 'lastname', 'address', 'personal_code', 'phone', 'email', 'work_place', 'age'];
 
     /**
      * The accessors to append channel's properties.
      *
      * @var array
      */
-    protected $appends = ['name', 'age', 'birthdate'];
+    protected $appends = ['name', 'birthdate'];
 
     /**
      *
@@ -28,13 +28,13 @@ class Person extends Model
         return $this->firstname.' '.$this->lastname;
     }
 
-    /**
-     *
-     */
-    public function getAgeAttribute()
-    {
-        return (new PersonalCode($this->personal_code))->result['Age'];
-    }
+    // /**
+    //  *
+    //  */
+    // public function getAgeAttribute()
+    // {
+    //     return (new PersonalCode($this->personal_code))->result['Age'];
+    // }
 
    /**
     *

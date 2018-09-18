@@ -1,6 +1,6 @@
 @extends('layouts.public-app')
 @section('title')
-    Registreerimine
+    Registreerimine PROOVITRENNile
 @endsection
 @section('subtitle')
 Täitmiseks kohustuslikud väljad on märgitud * tärniga
@@ -9,7 +9,10 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
 <create-registration-view inline-template :fields="{{$fields}}">
 <section class="section" v-cloak>
     <div class="container">
-
+            <div class="notification is-warning">
+                    See on registreerimine proovitrennile, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
+                    Olge kannatlik, me võtame Teiega ühendust niipea kui võimalik.
+            </div>
         <div class="columns">
             <div class="column is-three-quarters">
                 <form method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
@@ -29,21 +32,10 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
 
                     </div>
 
-                    <div class="control is-horizontal" style="margin-top: 40px">
-                        <div class="control-label" style="padding-top:0">
-                            <label><i class="fa fa-info-circle text-info"></i></label>
-                        </div>
-                        <div class="control is-grouped  has-icon has-icon-right">
-                            <div class="is-fullwidth">
-                                <p>Täpsemat tunniplaani saate vaadata <a href="http://www.trefoil.ee/spordikool/tunniplaan" target="_blank">siit</a></p>
-                            </div>
-                        </div>
-
-                    </div>
+                  
 
                     @include('registrations._student')
                     @include('registrations._parent1')
-                    @include('registrations._parent2')
 
                     <hr class="divider"/>
                     <div class="control is-horizontal" style="margin-bottom: 15px">

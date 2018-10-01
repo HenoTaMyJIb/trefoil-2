@@ -27,9 +27,9 @@
                     <p class="control">
                       <span class="select">
                         <select v-model="filters.status" @change="$refs.registrationsTable.reload()">
-                          <option value="0">Kõik staatused</option>
-                          <option value="new">Uus</option>
-                          <option value="waiting">Ootel</option>
+                          <option value="new">Uued registreerimised</option>
+                          <option value="old">Vanad registreerimised</option>
+                          <option value="all">Kõik registreerimised</option>
                         </select>
                       </span>
                     </p>
@@ -51,21 +51,10 @@
                         <td v-text="activeRow.student.name"></td>
                     </tr>
                 </table>
-                <div class="field mb10">
-                      <label class="label">Vali klubi rühm</label>
-                      <p class="control">
-                          <span class="select">
-                            <select v-model="group">
-                              <option value="0" disabled>Vali rühm</option>
-                              <option v-for="group in groups" :value="group.id" v-text="group.name"></option>
-                            </select>
-                          </span>
-                      </p>
-                  </div>
 
                   <div class="field is-grouped">
                     <p class="control">
-                      <button class="button is-primary" @click="acceptConfirm">Kinnita</button>
+                      <button class="button is-primary" @click="acceptConfirm" :disabled="confirmDisabled">Kinnita</button>
                     </p>
                   </div>
 

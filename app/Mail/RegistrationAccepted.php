@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Registration;
-use App\Group;
+use App\Field;
 
 class RegistrationAccepted extends Mailable
 {
@@ -15,7 +15,8 @@ class RegistrationAccepted extends Mailable
     public $registration;
     public $groupId;
     public $group;
-    public $email = 'sktrefoil@gmail.com';
+    public $firstname;
+    public $email = 'info@trefoil.ee';
 
     /**
      * Create a new message instance.
@@ -24,7 +25,8 @@ class RegistrationAccepted extends Mailable
     {
         $this->registration = $registration;
         $this->groupId = $groupId;
-        $this->group = Group::find($this->groupId);
+        $this->firstname = $registration->parent1->firstname;
+        $this->group = Field::find($this->groupId);
         if (in_array($this->groupId, [1, 2, 3])) {
             $this->email = 'Trefoilkids@gmail.com';
         }
@@ -37,6 +39,6 @@ class RegistrationAccepted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registrations.accepted')->subject('Te olete vastu võetud spordikooli Trefoil');
+        return $this->markdown('emails.registrations.accepted')->subject('Spordikool Trefoil | Ootame proovitrennile');
     }
 }

@@ -67,3 +67,7 @@ window.bus = new Vue()
   */
 
 window.moment = require('moment');
+
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage);
+require('vue-flash-message/dist/vue-flash-message.min.css');

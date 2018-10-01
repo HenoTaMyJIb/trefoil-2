@@ -28,6 +28,6 @@ class RegistrationFeedback extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registrations.feedback')->subject('Spordikooli Trefoil registreerimine');
+        return $this->markdown('emails.registrations.feedback')->subject('Spordikooli Trefoil proovitrennile registreerimine');
     }
 }

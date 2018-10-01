@@ -1,20 +1,25 @@
 @component('mail::message')
-# Tere
+# Tere, {{$firstname}}!
 
-Te olete vastu võetud rühma {{$registration->field->name}}.
+Ootame Teid "{{$group->name}}" rühma proovitrennile. Proovitrennide tunniplaani saate vaadata <a href="http://www.trefoil.ee/proovitrennide-tunniplaan">siit</a>.
 
-@if($group)
-Teie rühma treenerid on
-@foreach ($group->coaches as $coach)
-    - {{$coach->person->name}}
-@endforeach
-@endif
+Riided: mugavad spordiriided (püksid, t-särk). Soovi korral võib jalga panna sokid.
 
-Küsimused: {{$email}}
-
-Tunniplaani saate vaadata <a href="http://www.trefoil.ee/spordikool/tunniplaan">siit</a>.
+Küsimuste korral kirjutage {{$email}}.
 
 Ootame Teid treeningutele!
+
+
+-----------------------------
+Здравствуйте!
+
+Ждем Вас на пробную тренировку в группу "{{$group->name}}". Расписание пробных тренировок можете посмотреть <a href="http://www.trefoil.ee/proovitrennide-tunniplaan">здесь</a>.
+
+Приходите в удобной спортивной одежде (шорты, футболка). Обувь не обязательна, можно тренироваться в носочках.
+
+Если у Вас есть вопросы пишите нам {{$email}}.
+
+Увидимся на тренировках!
 
 Spordikool Trefoil
 @endcomponent

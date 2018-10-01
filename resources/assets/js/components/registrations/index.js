@@ -1,78 +1,93 @@
 module.exports = {
-
     /**
      * Data.
      */
     data() {
         return {
-            columns: [{
-                name: 'id',
-                title: 'ID',
-                sortField: 'id'
-            }, {
-                name: 'student.name',
-                title: 'Lapse nimi',
-            }, {
-                name: 'student.age',
-                title: 'Lapse vanus',
-            }, {
-                name: 'field.name',
-                title: 'Rühm',
-            }, {
-                name: 'created_at',
-                title: 'Kuupäev',
-                sortField: 'created_at',
-                callback: 'dateTimeFormat'
-            }, {
-                name: 'status',
-                title: this.$t('registrations.status'),
-                sortField: 'status',
-                callback: 'status'
-            }, {
-                name: '__component:registrations-actions',
-                dataClass: 'text-center'
-            }],
-            sortOrder: [{
-                field: 'created_at',
-                direction: 'desc',
-            }],
+            columns: [
+                {
+                    name: "id",
+                    title: "ID",
+                    sortField: "id"
+                },
+                {
+                    name: "student.name",
+                    title: "Lapse nimi"
+                },
+                {
+                    name: "student.age",
+                    title: "Lapse vanus"
+                },
+                {
+                    name: "field.name",
+                    title: "Rühm"
+                },
+                {
+                    name: "created_at",
+                    title: "Kuupäev",
+                    sortField: "created_at",
+                    callback: "dateTimeFormat"
+                },
+                {
+                    name: "status",
+                    title: this.$t("registrations.status"),
+                    sortField: "status",
+                    callback: "status"
+                },
+                {
+                    name: "__component:registrations-actions",
+                    dataClass: "text-center"
+                }
+            ],
+            sortOrder: [
+                {
+                    field: "created_at",
+                    direction: "desc"
+                }
+            ],
             waitingCount: 0,
             filters: {
-                search: '',
+                search: "",
                 field: 0,
-                status: 0,
-                year: 2017
+                status: 'new',
             },
             showInfoModal: false,
             showModal: false,
             group: 0,
-            activeRow: null
-        }
+            activeRow: null,
+            confirmDisabled: false
+        };
     },
 
-    props: ['groups'],
+    props: ["groups"],
 
     mounted() {
-        axios.get('/admin/registrations/waiting-count').then(response => {
+        axios.get("/admin/registrations/waiting-count").then(response => {
             this.waitingCount = response.data;
-        })
+        });
     },
 
     methods: {
-      acceptConfirm() {
-          if(this.group > 0) {
-            axios.put('/admin/registrations/' + this.activeRow.id + '/accept', {group: this.group}).then(response => {
-                bus.$emit('datatable:reload');
-                this.$refs.modal.close()
-            })
-          }
-
-
-      },
+        acceptConfirm() {
+            this.confirmDisabled = true;
+            axios
+                .put("/admin/registrations/" + this.activeRow.id + "/accept", { group: this.group })
+                .then(response => {
+                    bus.$emit("datatable:reload");
+                    this.$refs.modal.close();
+                    this.confirmDisabled = false;
+                    this.flash('Kinnitatud', 'success', {
+                        timeout: 3000,
+                    });
+                })
+                .catch(e => {
+                    this.confirmDisabled = false;
+                });
+        }
     }
 };
 
-Vue.component('registrations-actions', {
+Vue.component("registrations-actions", {
     template: [
         `
     <div>
@@ -89,7 +104,7 @@ Vue.component('registrations-actions', {
 
     </div>
     `
-    ].join(''),
+    ].join(""),
     props: {
         rowData: {
             type: Object,
@@ -99,27 +114,29 @@ Vue.component('registrations-actions', {
 
     methods: {
         showGymnast() {
-          this.$parent.$parent.$parent.showInfoModal = true;
-          this.$parent.$parent.$parent.activeRow = this.rowData;
+            this.$parent.$parent.$parent.showInfoModal = true;
+            this.$parent.$parent.$parent.activeRow = this.rowData;
         },
 
         accept() {
-          this.$parent.$parent.$parent.showModal = true;
+            this.$parent.$parent.$parent.showModal = true;
             this.$parent.$parent.$parent.activeRow = this.rowData;
         },
 
         reject() {
             let self = this;
             swal({
-                title: 'Kas tahad selle avalduse tagasi lükata?',
-                type: 'warning',
-                showCancelButton: true,
+                title: "Kas tahad selle avalduse tagasi lükata?",
+                type: "warning",
+                showCancelButton: true
             }).then(function() {
-              axios.put('/admin/registrations/' + self.rowData.id + '/reject').then(response => {
-                  bus.$emit('datatable:reload');
-              });
+                axios.put("/admin/registrations/" + self.rowData.id + "/reject").then(response => {
+                    bus.$emit("datatable:reload");
+                    self.flash('Tagasi lükatud', 'success', {
+                        timeout: 3000,
+                    });
+                });
             });
-
-        },
+        }
     }
 });

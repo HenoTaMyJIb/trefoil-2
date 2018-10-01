@@ -27,6 +27,7 @@
 <body>
 
     <div id="app" v-cloak>
+        <flash-message></flash-message>
         @include('layouts._topbar')
         <section class="hero is-primary">
             <!-- Hero header: will stick at the top -->

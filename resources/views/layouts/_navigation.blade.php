@@ -7,14 +7,6 @@
         <li><a href="{{url('admin/registrations')}}">Registreerimised</a></li>
         <li><a href="{{url('admin/fields')}}">Registreerimise rühmad</a></li>
     </ul>
-    <p class="menu-label">
-        Minu klubi
-    </p>
-    <ul class="menu-list">
-        <li><a href="{{url('admin/coaches')}}">Treenerid</a></li>
-        <li><a href="{{url('admin/groups')}}">Klubi rühmad</a></li>
-        <li><a href="{{url('admin/gymnasts')}}">Võimlejad</a></li>
-    </ul>
     <hr class="divider">
     <ul class="menu-list">
         <li>

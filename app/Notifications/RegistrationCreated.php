@@ -8,9 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Registration;
 
-class RegistrationCreated extends Notification implements ShouldQueue
+class RegistrationCreated extends Notification
 {
-    use Queueable;
+    // use Queueable;
 
     public $registration;
 

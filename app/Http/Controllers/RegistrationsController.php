@@ -46,15 +46,22 @@ class RegistrationsController extends Controller
     public function fetch(Request $request)
     {
         $query = Registration::with('student', 'parent1', 'field')
-            ->field($request->field)
-            ->whereNotIn('status', ['accepted', 'rejected'])
-            ->status($request->status);
+            ->field($request->field);
+            // ->whereNotIn('status', ['accepted', 'rejected'])
+            // ->status($request->status);
+
         if ($request->search) {
             $query->whereHas('student', function ($q) use ($request) {
                 $q->where('personal_code', 'like', "%$request->search%")
                     ->orWhere('firstname', 'like', "%$request->search%")
                     ->orWhere('lastname', 'like', "%$request->search%");
             })->get();
+        }
+
+        if($request->status == 'new') {
+            $query->whereIn('status', ['new', 'waiting']);
+        } else if($request->status == 'old') {
+            $query->whereIn('status', ['accepted', 'rejected']);
         }
 
         return (new Datatable($query))
@@ -105,7 +112,9 @@ class RegistrationsController extends Controller
             $parent1
         );
 
-        Notification::send([User::superAdmin(), User::admin()], new RegistrationCreated($registration));
+        $recipients = User::whereIn('email', explode(',', env('NOTIFICATION_EMAILS')))->get();
+
+        Notification::send($recipients, new RegistrationCreated($registration));
         Mail::to($parent1['email'])->queue(new RegistrationFeedback($registration));
 
         $request->session()->flash('status', 'Aitäh, registreerimine õnnestus! Me võtame Teiega ühendust.');
@@ -175,16 +184,8 @@ class RegistrationsController extends Controller
      */
     public function accept(Request $request, Registration $registration)
     {
-        $gymnast = Gymnast::forceCreate([
-            'student_id' => $registration->student_id,
-            'parent1_id' => $registration->parent1_id,
-            'parent2_id' => $registration->parent2_id,
-            'club_id' => env('ACTIVE_CLUB'),
-            'group_id' => $request->group
-        ]);
-
         $registration->update(['status' => 'accepted']);
-        Mail::to($registration->parent1->email)->queue(new RegistrationAccepted($registration, $request->group));
+        Mail::to($registration->parent1->email)->queue(new RegistrationAccepted($registration, $registration->field_id));
 
         return response(['message' => 'ok']);
     }

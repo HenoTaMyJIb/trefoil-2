@@ -48,7 +48,7 @@ class RegistrationCreated extends Notification
                     ->greeting('Tere')
                     ->line('Uus registreerimine rühma: ' . $this->registration->field->name)
                     ->line('Lapse nimi: ' . $this->registration->student->name . " - {$this->registration->student->age} aastat")
-                    ->line('Vanema nimi: ' . $this->registration->parent1->name . " (E-post: {$this->registration->parent1->email} | Telefon: {$this->registration->parent1->phone})")
+                    ->line('Kontaktisik: ' . $this->registration->parent1->name . " (E-post: {$this->registration->parent1->email} | Telefon: {$this->registration->parent1->phone})")
                     ->line('Kommentaar: ' . $this->registration->comment)
                     ->salutation(config('app.name'));
     }

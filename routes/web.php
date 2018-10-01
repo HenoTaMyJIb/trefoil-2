@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('registration');
-});
-
 Route::get('/admin', function () {
     return redirect('admin/registrations');
 });
@@ -25,7 +21,7 @@ Route::get('test-email', function () {
     dd("Test email sent");
 });
 
-Route::get('registration', 'RegistrationsController@create');
+Route::get('/', 'RegistrationsController@create');
 Route::post('registrations', 'RegistrationsController@store');
 
 Route::get('admin/registrations', 'RegistrationsController@index');

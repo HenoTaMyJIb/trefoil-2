@@ -28,7 +28,7 @@ class RegistrationAccepted extends Mailable
         $this->firstname = $registration->parent1->firstname;
         $this->group = Field::find($this->groupId);
         if (in_array($this->groupId, [1, 2, 3])) {
-            $this->email = 'Trefoilkids@gmail.com';
+            $this->email = 'kids@trefoil.ee';
         }
     }
 

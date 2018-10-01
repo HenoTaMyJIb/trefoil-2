@@ -33,7 +33,7 @@ module.exports = {
             this.form.submit('post', '/registrations')
                 .then(response => {
                     this.loading = false;
-                    window.location.replace('/registration')
+                    window.location.replace('/')
                 }).catch(e => {
                     this.loading = false;
                 });

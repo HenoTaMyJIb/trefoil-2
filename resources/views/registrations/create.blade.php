@@ -25,7 +25,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                                 <select class="input" v-bind:class="{'is-danger': form.errors.has('field') }" v-model="form.field" @change="isFieldFull" name="field" placeholder="Rühm">
                                     <option v-for="field in fields" :value="field.id" v-text="field.name"></option>
                                 </select>
-                                <p class="help is-info title is-6" v-if="fieldFull"><i class="fa fa-warning"></i> Rühm on täis. Teie taotlus on automaatselt staatusega 'Ootel'.</p>
+                                <p class="help is-info title is-6" v-if="fieldFull"><i class="fa fa-warning"></i> Rühm on täis. Teie registreerimine on automaatselt staatusega 'Ootel'.</p>
                                 <span class="help is-danger" v-if="form.errors.has('field')">@{{ form.errors.get('field') }}</span>
                             </div>
                         </div>

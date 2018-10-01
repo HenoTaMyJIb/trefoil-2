@@ -15,6 +15,10 @@ Route::get('/', function () {
     return redirect('registration');
 });
 
+Route::get('/admin', function () {
+    return redirect('admin/registrations');
+});
+
 Route::get('test-email', function () {
     $user = \App\User::superAdmin();
     $user->notify(new \App\Notifications\TestEmail());

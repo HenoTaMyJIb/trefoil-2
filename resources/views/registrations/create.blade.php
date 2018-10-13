@@ -1,6 +1,6 @@
 @extends('layouts.public-app')
 @section('title')
-    Registreerimine PROOVITRENNile
+    Registreerimine PROOVITRENNI
 @endsection
 @section('subtitle')
 Täitmiseks kohustuslikud väljad on märgitud * tärniga
@@ -12,7 +12,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
         <div class="columns">
             <div class="column is-three-quarters">
                 <div class="notification is-warning">
-                        See on registreerimine proovitrennile, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
+                        See on registreerimine proovitrenni, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
                         Olge kannatlik, me võtame Teiega ühendust niipea kui võimalik.
                 </div>
                 <form method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">

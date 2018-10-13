@@ -39,6 +39,6 @@ class RegistrationAccepted extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registrations.accepted')->subject('Spordikool Trefoil | Ootame proovitrennile');
+        return $this->markdown('emails.registrations.accepted')->subject('Spordikool Trefoil | Ootame proovitrenni');
     }
 }

@@ -8,7 +8,7 @@
             <span class="help is-danger" v-if="form.errors.has('student.firstname')">@{{ form.errors.get('student.firstname') }}</span>
         </p>
         <p class="control is-expanded has-icon has-icon-right">
-            <input class="input" v-model="form.student.lastname" v-bind:class="{'is-danger': form.errors.has('student.lastname') }" type="text" name="student[lastname]" placeholder="Võimleja perenimi*">
+            <input class="input" v-model="form.student.lastname" v-bind:class="{'is-danger': form.errors.has('student.lastname') }" type="text" name="student[lastname]" placeholder="Võimleja perekonnanimi*">
             <span class="help is-danger" v-if="form.errors.has('student.lastname')">@{{ form.errors.get('student.lastname') }}</span>
         </p>
     </div>
@@ -16,7 +16,7 @@
 
 <div class="control is-horizontal">
     <div class="control-label required">
-        <label>Võimleja vanus (täis aastat)</label>
+        <label>Võimleja vanus</label>
     </div>
     <div class="control is-grouped">
         <p class="control is-expanded has-icon has-icon-right">

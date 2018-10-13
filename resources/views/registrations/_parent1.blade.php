@@ -9,7 +9,7 @@
         </p>
 
         <p class="control is-expanded has-icon has-icon-right">
-            <input class="input" v-model="form.parent1.lastname" v-bind:class="{'is-danger': form.errors.has('parent1.lastname') }" type="text" name="parent1[lastname]" placeholder="Kontaktisiku perenimi*">
+            <input class="input" v-model="form.parent1.lastname" v-bind:class="{'is-danger': form.errors.has('parent1.lastname') }" type="text" name="parent1[lastname]" placeholder="Kontaktisiku perekonnanimi*">
             <span class="help is-danger" v-if="form.errors.has('parent1.lastname')">@{{ form.errors.get('parent1.lastname') }}</span>
         </p>
 

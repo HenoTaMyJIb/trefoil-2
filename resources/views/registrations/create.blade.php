@@ -37,12 +37,12 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         </div>
                         <div class="control is-grouped  has-icon has-icon-right">
                             <div class="select is-fullwidth">
-                                <label class="radio" v-for="hall in halls">
-                                    <input type="radio" name="hall" :value="hall" v-model="form.hall" v-bind:class="{'is-danger': form.errors.has('hall') }">
-                                    @{{ $t('registrations.' + hall)}}
+                                <label class="radio" v-for="h in halls">
+                                    <input type="radio" name="hall" :value="h" v-model="form.hall" v-bind:class="{'is-danger': form.errors.has('hall') }">
+                                    @{{ $t('registrations.' + h)}}
                                 </label>
                                 
-                                <span class="help is-danger" v-if="form.errors.has('hall')">@{{ form.errors.get('field') }}</span>
+                                <span class="help is-danger" v-if="form.errors.has('hall')">@{{ form.errors.get('hall') }}</span>
                             </div>
                         </div>
                     </div>

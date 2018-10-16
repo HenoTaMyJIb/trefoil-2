@@ -82,13 +82,13 @@ module.exports = {
                 },
                 comment: '',
                 field: 1,
+                hall: ''
             });
         }
     },
 
     computed: {
         halls() {
-            this.form.errors.clear('hall');
             let selectedField = this.fields.find(field => {
                 return field.id == this.form.field;
             })

@@ -1,4 +1,4 @@
-Vue.component('modal', {
+Vue.component("modal", {
     template: `
     <div class="modal is-active" @keydown.esc="$emit('close')">
       <div class="modal-background"></div>
@@ -21,9 +21,29 @@ Vue.component('modal', {
     },
 
     methods: {
-      close() {
-        this.$emit('close')
-      }
-    }
+        close() {
+            this.$emit("close");
+        }
+    },
 
+    mounted() {
+      let self = this;
+      window.addEventListener('keyup', function(event) {
+        if(event.keyCode == 27) {
+          self.$emit("close");
+        }
+      });
+        // document.onkeydown = function(evt) {
+        //     evt = evt || window.event;
+        //     var isEscape = false;
+        //     if ("key" in evt) {
+        //         isEscape = evt.key == "Escape" || evt.key == "Esc";
+        //     } else {
+        //         isEscape = evt.keyCode == 27;
+        //     }
+        //     if (isEscape) {
+        //         alert("Escape");
+        //     }
+        // };
+    }
 });

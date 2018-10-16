@@ -11,7 +11,7 @@ class Registration extends Model
      *
      * @var array
      */
-    protected $fillable = ['comment', 'field_id', 'status'];
+    protected $fillable = ['comment', 'field_id', 'status', 'hall'];
 
     public function student()
     {
@@ -33,11 +33,12 @@ class Registration extends Model
         return $this->belongsTo(Field::class);
     }
 
-    public static function fromForm($comment, $fieldId, Person $student, Person $parent1)
+    public static function fromForm($comment, $fieldId, $hall, Person $student, Person $parent1)
     {
         $registration = Registration::create([
             'comment' => $comment,
-            'field_id' => $fieldId
+            'field_id' => $fieldId,
+            'hall' => $hall
         ]);
 
         $field = Field::find($fieldId);

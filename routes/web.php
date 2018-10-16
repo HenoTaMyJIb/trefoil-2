@@ -32,6 +32,8 @@ Route::put('admin/registrations/{registration}/accept', 'RegistrationsController
 Route::put('admin/registrations/{registration}/reject', 'RegistrationsController@reject');
 
 Route::get('admin/fields', 'FieldsController@index');
+Route::post('admin/fields', 'FieldsController@store');
+Route::put('admin/fields/{field}', 'FieldsController@update');
 Route::get('admin/fields/fetch', 'FieldsController@fetch');
 Route::put('admin/fields/{field}/not-full', 'FieldsController@notFull');
 Route::put('admin/fields/{field}/is-full', 'FieldsController@isFull');

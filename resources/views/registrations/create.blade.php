@@ -15,7 +15,7 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                         See on registreerimine proovitrenni, <strong>MITTE</strong> klubisse. Klubisse registreerimise info me anname Teile pärast proovitrenni.
                         Olge kannatlik, me võtame Teiega ühendust niipea kui võimalik.
                 </div>
-                <form method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)">
+                <form method="post" @submit.prevent="onSubmit" @keydown="form.errors.clear($event.target.name)" @change="form.errors.clear($event.target.name)">
                     <div class="control is-horizontal">
                         <div class="control-label required">
                             <label>Rühm</label>
@@ -29,7 +29,22 @@ Täitmiseks kohustuslikud väljad on märgitud * tärniga
                                 <span class="help is-danger" v-if="form.errors.has('field')">@{{ form.errors.get('field') }}</span>
                             </div>
                         </div>
+                    </div>
 
+                    <div class="control is-horizontal" v-if="halls.length > 0">
+                        <div class="control-label required">
+                            <label>Saal</label>
+                        </div>
+                        <div class="control is-grouped  has-icon has-icon-right">
+                            <div class="select is-fullwidth">
+                                <label class="radio" v-for="hall in halls">
+                                    <input type="radio" name="hall" :value="hall" v-model="form.hall" v-bind:class="{'is-danger': form.errors.has('hall') }">
+                                    @{{ $t('registrations.' + hall)}}
+                                </label>
+                                
+                                <span class="help is-danger" v-if="form.errors.has('hall')">@{{ form.errors.get('field') }}</span>
+                            </div>
+                        </div>
                     </div>
 
                   

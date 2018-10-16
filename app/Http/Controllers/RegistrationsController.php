@@ -92,6 +92,7 @@ class RegistrationsController extends Controller
     {
         $this->validate($request, [
             'field' => 'required',
+            'hall' => 'required',
             'student.firstname' => 'required|max:255',
             'student.lastname' => 'required|max:255',
             'student.age' => 'required|numeric|max:255',
@@ -108,6 +109,7 @@ class RegistrationsController extends Controller
         $registration = Registration::fromForm(
             $request->comment,
             $request->field,
+            $request->hall,
             $student,
             $parent1
         );

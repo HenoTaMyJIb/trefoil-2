@@ -12,6 +12,27 @@ class Field extends Model
      * @var array
      */
     protected $fillable = [
-        'is_full',
+        'is_full', 'name', 'description', 'hall'
     ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['halls'];
+
+    public function setHallAttribute($value)
+    {
+        $this->attributes['hall'] = implode(',', $value);
+    }
+
+    public function getHallsAttribute()
+    {
+        if(!$this->hall) {
+            return [];
+        }
+
+        return explode(',', $this->hall);
+    }
 }

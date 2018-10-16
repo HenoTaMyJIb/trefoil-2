@@ -23,6 +23,10 @@ module.exports = {
                     title: "Rühm"
                 },
                 {
+                    name: "hall",
+                    title: "Saal"
+                },
+                {
                     name: "created_at",
                     title: "Kuupäev",
                     sortField: "created_at",

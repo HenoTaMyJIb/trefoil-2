@@ -19,6 +19,7 @@ module.exports = {
                 },
                 comment: '',
                 field: '',
+                hall: '',
             }),
             fieldFull: false,
         }
@@ -82,6 +83,21 @@ module.exports = {
                 comment: '',
                 field: 1,
             });
+        }
+    },
+
+    computed: {
+        halls() {
+            this.form.errors.clear('hall');
+            let selectedField = this.fields.find(field => {
+                return field.id == this.form.field;
+            })
+
+            if (!selectedField) {
+                return [];
+            }
+
+            return selectedField.halls;
         }
     }
 
